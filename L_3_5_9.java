@@ -1,6 +1,12 @@
-import java.util.Arrays
+import java.util.Arrays;
 
-public abstract class KeywordAnalyzer implements TextAnalyzer{
+public class L_3_5_9 {
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+}
+
+abstract class KeywordAnalyzer implements TextAnalyzer{
     protected abstract String[] getKeywords();
     protected abstract Label getLabel();
 
@@ -13,7 +19,16 @@ public abstract class KeywordAnalyzer implements TextAnalyzer{
     }
 }
 
-public class SpamAnalyzer extends KeywordAnalyzer implements TextAnalyzer {
+
+interface TextAnalyzer {
+    Label processText(String text);
+}
+
+enum Label {
+    SPAM, NEGATIVE_TEXT, TOO_LONG, OK
+}
+
+class SpamAnalyzer extends KeywordAnalyzer implements TextAnalyzer {
 
     private String[] keywords;
 
@@ -32,7 +47,7 @@ public class SpamAnalyzer extends KeywordAnalyzer implements TextAnalyzer {
     }
 }
 
-public class NegativeTextAnalyzer extends KeywordAnalyzer implements TextAnalyzer {
+class NegativeTextAnalyzer extends KeywordAnalyzer implements TextAnalyzer {
     private final String[] Smiles ={":(", "=(", ":|"};
 
     public NegativeTextAnalyzer(){}
@@ -48,7 +63,7 @@ public class NegativeTextAnalyzer extends KeywordAnalyzer implements TextAnalyze
     }
 }
 
-public class TooLongTextAnalyzer implements TextAnalyzer{
+class TooLongTextAnalyzer implements TextAnalyzer{
     private int maxLength;
 
     public TooLongTextAnalyzer(int var1){
@@ -64,17 +79,10 @@ public class TooLongTextAnalyzer implements TextAnalyzer{
     }
 }
 
-    public static Label checkLabels(TextAnalyzer[] analyzers, String text) {
-        for (TextAnalyzer anal: analyzers){
-            if (anal.processText(text)!=Label.OK)  return anal.processText(text);
-        }
-        return Label.OK;
+/*checkLabels(TextAnalyzer[] analyzers, String text) {
+    for (TextAnalyzer anal: analyzers){
+        if (anal.processText(text)!=Label.OK)  return anal.processText(text);
     }
-
-public interface TextAnalyzer {
-    Label processText(String text);
+    return Label.OK;
 }
-
-public enum Label {
-    SPAM, NEGATIVE_TEXT, TOO_LONG, OK
-}
+*/
