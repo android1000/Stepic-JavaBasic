@@ -11,6 +11,7 @@ public class L_5_3_11 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Charset.defaultCharset();
     }
 
     public static String readAsString(InputStream inputStream, Charset charset) throws IOException {
