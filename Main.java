@@ -1,11 +1,16 @@
 import java.nio.charset.StandardCharsets;
+import java.util.Optional;
 
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        for (byte b : "Ы".getBytes(StandardCharsets.UTF_8)){
-            System.out.printf("%d ", Byte.toUnsignedInt(b));
+        Example<String> s= new Optional.of();
+    }
+
+    public class Example<X> {
+        public void someMethod(Object obj) {
+
         }
     }
+
 }
