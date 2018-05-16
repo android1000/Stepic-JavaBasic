@@ -20,6 +20,6 @@ public class L_6_2_15 {
             System.out.print(need+s.toString());
             need=" ";
         }
-    }
+    }   
 }
 
